@@ -3,17 +3,21 @@ package com.example.rries.sampleapp.ui
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
+import com.example.rries.sampleapp.TodoApplication
 import com.example.rries.sampleapp.data.Todo
 import com.example.rries.sampleapp.data.TodoListDatabase
 import com.example.rries.sampleapp.data.TodoRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.android.Main
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 
 class TodoViewModel(application: Application): AndroidViewModel(application) {
 
-    private var todoRepository: TodoRepository? = null
+    @Inject
+    lateinit var todoRepository: TodoRepository
+
     var allTodos: LiveData<List<Todo>>? = null
 
     private var parentJob = Job()
@@ -23,20 +27,20 @@ class TodoViewModel(application: Application): AndroidViewModel(application) {
     private val scope = CoroutineScope(coroutineContext)
 
     init {
-        val todoDao = TodoListDatabase.getDatabase(application).todoDao()
-        todoRepository = TodoRepository(todoDao)
-
-        allTodos = todoRepository?.allTodos
+        (application.applicationContext as TodoApplication).component.inject(this)
+        allTodos = todoRepository.allTodos
     }
 
     fun addTodo(todo: Todo) = scope.launch(Dispatchers.IO) {
-        todoRepository?.addTodo(todo)
+        todoRepository.addTodo(todo)
     }
 
     fun deleteTodo(todoId: Int) = scope.launch(Dispatchers.IO) {
-        val todo = todoRepository?.getTodoById(todoId)
-        todo?.let { todoRepository?.deleteTodo(it) }
+        val todo = getTodoById(todoId)
+        todo?.let { todoRepository.deleteTodo(it) }
     }
+
+    fun getTodoById(todoId: Int) = todoRepository.getTodoById(todoId)
 
     override fun onCleared() {
         super.onCleared()

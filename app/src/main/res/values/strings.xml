@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">SampleApp</string>
+    <string name="app_name">TodoApp</string>
     <string name="action_settings">Settings</string>
-    <string name="hint_word">ToDo...</string>
+    <string name="hint_word">To do</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">ToDo not saved because it is empty.</string>
     <string name="popup_edit">Edit</string>

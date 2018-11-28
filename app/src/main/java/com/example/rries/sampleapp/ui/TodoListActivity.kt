@@ -53,7 +53,8 @@ class TodoListActivity : AppCompatActivity(), TodoListAdapter.TodoListAdapterAct
 
     override fun requestEditTodoActivity(todoId: Int) {
         val intent = Intent(this@TodoListActivity, EditTodoActivity::class.java)
-        startActivityForResult(intent, newTodoActivityRequestCode)
+        intent.putExtra("todoId", todoId)
+        startActivityForResult(intent, updateTodoActivityResult)
     }
 
     override fun requestDeleteTodo(todoId: Int) {
@@ -63,5 +64,6 @@ class TodoListActivity : AppCompatActivity(), TodoListAdapter.TodoListAdapterAct
 
     companion object {
         const val newTodoActivityRequestCode = 1
+        const val updateTodoActivityResult = 2
     }
 }
