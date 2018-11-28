@@ -1,8 +1,10 @@
 package com.example.rries.sampleapp.ui
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -54,6 +56,11 @@ class TodoListActivity : AppCompatActivity(), TodoListAdapter.TodoListAdapterAct
     override fun requestEditTodoActivity(todoId: Int) {
         val intent = Intent(this@TodoListActivity, EditTodoActivity::class.java)
         startActivityForResult(intent, newTodoActivityRequestCode)
+    }
+
+    override fun requestDeleteTodo(todoId: Int) {
+        todoViewModel.deleteTodo(todoId)
+        recyclerview.adapter?.notifyDataSetChanged()
     }
 
     companion object {

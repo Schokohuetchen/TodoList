@@ -33,6 +33,11 @@ class TodoViewModel(application: Application): AndroidViewModel(application) {
         todoRepository?.addTodo(todo)
     }
 
+    fun deleteTodo(todoId: Int) = scope.launch(Dispatchers.IO) {
+        val todo = todoRepository?.getTodoById(todoId)
+        todo?.let { todoRepository?.deleteTodo(it) }
+    }
+
     override fun onCleared() {
         super.onCleared()
         parentJob.cancel()

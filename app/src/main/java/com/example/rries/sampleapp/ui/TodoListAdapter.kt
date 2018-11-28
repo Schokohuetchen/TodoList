@@ -1,8 +1,6 @@
 package com.example.rries.sampleapp.ui
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -13,15 +11,12 @@ import android.widget.PopupMenu
 import android.widget.TextView
 import com.example.rries.sampleapp.R
 import com.example.rries.sampleapp.data.Todo
-import com.example.rries.sampleapp.data.TodoRepository
 
 class TodoListAdapter constructor(private var context: Context)
     : RecyclerView.Adapter<TodoListAdapter.TodoListViewHolder>(), PopupMenu.OnMenuItemClickListener {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var todos = emptyList<Todo>()
-
-    private var todoRepository: TodoRepository? = null
 
     private val actions = context as TodoListAdapterActions
     private var lastClickedItemPosition = -1
@@ -78,28 +73,13 @@ class TodoListAdapter constructor(private var context: Context)
 
     private fun deleteTodo() {
         if (lastClickedOverflowMenu != null && lastClickedItemPosition >= 0) {
-            showDeleteConfirmationDialog(todos[lastClickedItemPosition].todoId)
+            actions.requestDeleteTodo(todos[lastClickedItemPosition].todoId)
         }
-    }
-
-    private fun showDeleteConfirmationDialog(todoId: Int) {
-        val todoToDelete = todoRepository?.getTodoById(todoId)
-
-        AlertDialog.Builder(context)
-            .setTitle("Do you want to delete this Todo?")
-            .setPositiveButton("Delete") { _: DialogInterface, _: Int ->
-                todoToDelete?.let { removeTodo(it) }
-            }
-            .show()
-    }
-
-    private fun removeTodo(todoToDelete: Todo) {
-        todoRepository?.deleteTodo(todoToDelete)
-        notifyItemRemoved(lastClickedItemPosition)
     }
 
     interface TodoListAdapterActions {
         fun requestEditTodoActivity(todoId: Int)
+        fun requestDeleteTodo(todoId: Int)
     }
 
     inner class TodoListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
