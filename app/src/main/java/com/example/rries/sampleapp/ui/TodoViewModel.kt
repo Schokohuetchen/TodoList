@@ -35,7 +35,7 @@ class TodoViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun updateTodo(todo: Todo) = scope.launch(Dispatchers.IO) {
-        todo?.let{ todoRepository.updateTodo(todo) }
+        todo.let{ todoRepository.updateTodo(todo) }
     }
 
     fun deleteTodo(todoId: Int) = scope.launch(Dispatchers.IO) {
