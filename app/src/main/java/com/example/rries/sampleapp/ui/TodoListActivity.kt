@@ -43,6 +43,20 @@ class TodoListActivity : AppCompatActivity(), TodoListAdapter.TodoListAdapterAct
                 val todo = Todo(it.getStringExtra(NewTodoActivity.EXTRA_REPLY))
                 todoViewModel.addTodo(todo)
             }
+        } else if (requestCode == updateTodoActivityResult && resultCode == Activity.RESULT_OK) {
+            data?.let {
+                val stringExtra = it.getStringExtra(EditTodoActivity.EXTRA_DESCRIPTION)
+                val todoId = it.getIntExtra(EditTodoActivity.EXTRA_ID, 0)
+
+                val todo =
+                    if (todoId != 0) {
+                        Todo(todoId, stringExtra)
+                    } else {
+                        Todo(stringExtra)
+                    }
+
+                todoViewModel.updateTodo(todo)
+            }
         } else {
             Toast.makeText(
                 applicationContext,

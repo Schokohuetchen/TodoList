@@ -5,7 +5,6 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import com.example.rries.sampleapp.TodoApplication
 import com.example.rries.sampleapp.data.Todo
-import com.example.rries.sampleapp.data.TodoListDatabase
 import com.example.rries.sampleapp.data.TodoRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.android.Main
@@ -35,12 +34,16 @@ class TodoViewModel(application: Application): AndroidViewModel(application) {
         todoRepository.addTodo(todo)
     }
 
+    fun updateTodo(todo: Todo) = scope.launch(Dispatchers.IO) {
+        todo?.let{ todoRepository.updateTodo(todo) }
+    }
+
     fun deleteTodo(todoId: Int) = scope.launch(Dispatchers.IO) {
         val todo = getTodoById(todoId)
         todo?.let { todoRepository.deleteTodo(it) }
     }
 
-    fun getTodoById(todoId: Int) = todoRepository.getTodoById(todoId)
+    fun getTodoById(todoId: Int): Todo? = todoRepository.getTodoById(todoId)
 
     override fun onCleared() {
         super.onCleared()
