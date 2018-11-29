@@ -1,18 +1,17 @@
-package com.cucumberespressotest
+package com.example.rries.sampleapp.test
 
 import android.os.Bundle
-import android.support.test.runner.MonitoringInstrumentation
+import android.support.test.runner.AndroidJUnitRunner
 import cucumber.api.android.CucumberInstrumentationCore
 
-class Instrumentation: MonitoringInstrumentation() {
+@Suppress("unused")
+class CucumberTestRunner: AndroidJUnitRunner() {
 
     private val instrumentationCore = CucumberInstrumentationCore(this)
 
     override fun onCreate(arguments: Bundle?) {
-        super.onCreate(arguments)
-
         instrumentationCore.create(arguments)
-        start()
+        super.onCreate(arguments)
     }
 
     override fun onStart() {

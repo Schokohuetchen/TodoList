@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: "de.mannodermaus.android-junit5"
+apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
     compileSdkVersion 28
@@ -12,8 +12,8 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testApplicationId "com.cucumberespressotest"
-        testInstrumentationRunner "com.cucumberespressotest.Instrumentation"
+        testApplicationId 'com.example.rries.sampleapp.test'
+        testInstrumentationRunner 'com.example.rries.sampleapp.test.CucumberTestRunner'
     }
 
     buildTypes {
@@ -23,15 +23,20 @@ android {
         }
     }
 
+    sourceSets {
+        androidTest {
+            assets.srcDirs = ['src/androidTest/assets']
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    sourceSets {
-        androidTest {
-            assets.srcDirs = ['src/androidTest/assets']
-        }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/LICENSE-notice.md'
     }
 }
 
@@ -66,7 +71,14 @@ dependencies {
     androidTestImplementation junit5.instrumentationTests()
     androidTestImplementation 'info.cukes:cucumber-android:1.2.5'
     androidTestImplementation 'info.cukes:cucumber-picocontainer:1.2.4'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+def getInstrumentation() {
+    project.hasProperty('cucumber') ?
+            'com.example.rries.sampleapp.runner.CucumberTestRunner' :
+            'android.support.test.runner.AndroidJUnitRunner'
 }
 
