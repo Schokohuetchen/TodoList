@@ -7,7 +7,6 @@ buildscript {
         archLifecycleVersion = '1.1.1'
         coroutines = '0.27.0-eap13'
         dagger = '2.15'
-        cucumber = '4.2.0'
         junit5_android = '1.0.32'
     }
 

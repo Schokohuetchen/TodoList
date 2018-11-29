@@ -12,7 +12,8 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testApplicationId "com.cucumberespressotest"
+        testInstrumentationRunner "com.cucumberespressotest.Instrumentation"
     }
 
     buildTypes {
@@ -25,6 +26,12 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        androidTest {
+            assets.srcDirs = ['src/androidTest/assets']
+        }
     }
 }
 
@@ -53,13 +60,11 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger"
     kapt "com.google.dagger:dagger-compiler:$dagger"
 
-    testImplementation "io.cucumber:cucumber-java:$cucumber"
-    testImplementation "io.cucumber:cucumber-junit:$cucumber"
-
     testImplementation junit5.unitTests()
     testImplementation junit5.parameterized()
 
     androidTestImplementation junit5.instrumentationTests()
+    androidTestImplementation 'info.cukes:cucumber-android:1.2.5'
     androidTestImplementation 'info.cukes:cucumber-picocontainer:1.2.4'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
