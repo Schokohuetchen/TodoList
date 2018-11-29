@@ -33,9 +33,9 @@
             android:layout_margin="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:backgroundTint="@color/addButton"
+            android:backgroundTint="@color/itemColor"
             app:srcCompat="@drawable/ic_add_black_24dp"
-            app:backgroundTint="@color/design_default_color_primary"/>
+            app:backgroundTint="@color/itemColor"/>
 
 </android.support.constraint.ConstraintLayout>
 
