@@ -1,3 +1,3 @@
 # TodoList
 
-Simple Todo list that uses Room, Dagger, Kotlin coroutines, and Cucumber and Espresso for acceptance testing.
+WIP Todo list that uses Room, Dagger, Kotlin coroutines, and will use Cucumber and Espresso for acceptance testing in the future.
