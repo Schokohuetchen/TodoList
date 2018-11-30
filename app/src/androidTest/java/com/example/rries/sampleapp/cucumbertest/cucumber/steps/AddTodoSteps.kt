@@ -1,4 +1,4 @@
-package com.example.rries.sampleapp.test
+package com.example.rries.sampleapp.cucumbertest.cucumber.steps
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
@@ -14,7 +14,7 @@ import cucumber.api.java.en.When
 import org.junit.After
 import org.junit.Rule
 
-open class AddTodoSteps {
+class AddTodoSteps {
 
     @Rule
     @JvmField

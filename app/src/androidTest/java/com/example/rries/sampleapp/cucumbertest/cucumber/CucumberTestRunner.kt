@@ -1,4 +1,4 @@
-package com.example.rries.sampleapp.test
+package com.example.rries.sampleapp.cucumbertest.cucumber
 
 import android.os.Bundle
 import android.support.test.runner.AndroidJUnitRunner
