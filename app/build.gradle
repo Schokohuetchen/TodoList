@@ -12,7 +12,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "com.example.rries.sampleapp.test.CucumberTestRunner"
+        testInstrumentationRunner getInstrumentation()
     }
 
     buildTypes {
@@ -87,4 +87,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+// Run ./gradlew connectedCheck -Pcucumber to run Cucumber Tests
+def getInstrumentation() {
+    project.hasProperty('cucumber') ?
+            'com.example.rries.sampleapp.cucumbertest.CucumberTestRunner' :
+            'android.support.test.runner.AndroidJUnitRunner'
 }
