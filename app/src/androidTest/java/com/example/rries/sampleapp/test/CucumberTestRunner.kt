@@ -1,11 +1,11 @@
-package com.example.rries.sampleapp.cucumbertest.cucumber
+package com.example.rries.sampleapp.test
 
 import android.os.Bundle
-import android.support.test.runner.AndroidJUnitRunner
+import android.support.test.runner.MonitoringInstrumentation
 import cucumber.api.android.CucumberInstrumentationCore
 
 @Suppress("unused")
-class CucumberTestRunner: AndroidJUnitRunner() {
+class CucumberTestRunner: MonitoringInstrumentation() {
 
     private val instrumentationCore = CucumberInstrumentationCore(this)
 
