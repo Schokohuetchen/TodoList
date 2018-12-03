@@ -12,17 +12,14 @@ class TodoRepository(private val todoDao: TodoDao) {
             it.todoId == todoId
         }
 
-    @WorkerThread
     fun addTodo(todo: Todo) {
         todoDao.addTodo(todo)
     }
 
-    @WorkerThread
     fun updateTodo(todo: Todo) {
         todoDao.updateTodo(todo)
     }
 
-    @WorkerThread
     fun deleteTodo(todo: Todo) {
         todoDao.deleteTodo(todo)
     }
