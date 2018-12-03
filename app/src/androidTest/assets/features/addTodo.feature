@@ -1,6 +1,6 @@
 Feature: Add Todo
 
-        Scenario: Add todo to list
+        Scenario Outline: Add todo to list
                 Given I see the list
                 When I click on the add button
                 And I see an editor
