@@ -28,11 +28,6 @@ class AddTodoRobot {
         onView(ViewMatchers.withId(R.id.editTodo)).perform(ViewActions.typeText(todo))
     }
 
-    fun closeKeyboard() {
-        closeSoftKeyboard()
-        sleep(100)
-    }
-
     fun clickOnSaveButton() {
         onView(ViewMatchers.withId(R.id.saveTodoButton)).perform(ViewActions.click())
     }

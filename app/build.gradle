@@ -12,7 +12,6 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testApplicationId 'com.example.rries.sampleapp.test'
         testInstrumentationRunner "com.example.rries.sampleapp.test.CucumberTestRunner"
     }
 
@@ -88,12 +87,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
-    implementation files('libs/cucumber-android-1.2.5.jar')
-    implementation files('libs/cucumber-core-1.2.5.jar')
-    implementation files('libs/cucumber-java-1.2.5.jar')
-    implementation files('libs/cucumber-junit-1.2.5.jar')
-    implementation files('libs/cucumber-jvm-deps-1.0.5.jar')
-    implementation files('libs/cucumber-picocontainer-1.2.5.jar')
-    implementation files('libs/gherkin-2.10.0.jar')
 }

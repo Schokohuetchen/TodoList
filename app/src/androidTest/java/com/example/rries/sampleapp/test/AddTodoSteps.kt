@@ -18,7 +18,7 @@ open class AddTodoSteps {
 
     @Before
     @Throws(Exception::class)
-    fun launchActivity() {
+    fun setUp() {
         robot.launchTodoListActivity(activityTestRule)
     }
 
@@ -38,19 +38,14 @@ open class AddTodoSteps {
         robot.clickOnFabButton()
     }
 
-    @And("I see an editor")
+    @Then("I see an editor")
     fun I_see_an_editor() {
         robot.editorOpened()
     }
 
-    @And("I enter a {todo} in the text field")
+    @And("I enter a {string} in the text field")
     fun I_enter_a_todo_in_the_text_field(todo: String) {
         robot.enterNewTodo(todo)
-    }
-
-    @And("I close the keyboard")
-    fun i_close_the_keyboard() {
-        robot.closeKeyboard()
     }
 
     @And("I click the save button")
@@ -58,7 +53,7 @@ open class AddTodoSteps {
         robot.clickOnSaveButton()
     }
 
-    @Then("I should see the list with the new {todo}")
+    @Then("I should see the list with the new {string}")
     fun I_should_see_the_list_with_the_new_todo(todo: String) {
         robot.openListWithNewTodo(todo)
     }
