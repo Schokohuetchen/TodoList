@@ -92,6 +92,6 @@ dependencies {
 // Run ./gradlew connectedCheck -Pcucumber to run Cucumber Tests
 def getInstrumentation() {
     project.hasProperty('cucumber') ?
-            'com.example.rries.sampleapp.cucumbertest.CucumberTestRunner' :
+            'com.example.rries.sampleapp.test.CucumberTestRunner' :
             'android.support.test.runner.AndroidJUnitRunner'
 }
