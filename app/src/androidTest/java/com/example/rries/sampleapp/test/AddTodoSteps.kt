@@ -29,32 +29,32 @@ open class AddTodoSteps {
     }
 
     @Given("I see the list")
-    fun I_see_the_list() {
+    fun i_see_the_list() {
         assertNotNull(activityTestRule.activity)
     }
 
     @When("I click on the add button")
-    fun I_click_on_the_add_button() {
+    fun i_click_on_the_add_button() {
         robot.clickOnFabButton()
     }
 
     @Then("I see an editor")
-    fun I_see_an_editor() {
+    fun i_see_an_editor() {
         robot.editorOpened()
     }
 
-    @And("I enter a {string} in the text field")
-    fun I_enter_a_todo_in_the_text_field(todo: String) {
+    @And("I enter {string} in the text field")
+    fun i_enter_testTodo_in_the_text_field(todo: String) {
         robot.enterNewTodo(todo)
     }
 
     @And("I click the save button")
-    fun I_click_the_save_button() {
+    fun i_click_the_save_button() {
         robot.clickOnSaveButton()
     }
 
     @Then("I should see the list with the new {string}")
-    fun I_should_see_the_list_with_the_new_todo(todo: String) {
+    fun i_should_see_the_list_with_the_new_todo(todo: String) {
         robot.openListWithNewTodo(todo)
     }
 
