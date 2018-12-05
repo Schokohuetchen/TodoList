@@ -23,4 +23,8 @@ class TodoRepository(private val todoDao: TodoDao) {
     fun deleteTodo(todo: Todo) {
         todoDao.deleteTodo(todo)
     }
+
+    fun deleteAll() {
+        todoDao.deleteAll()
+    }
 }
