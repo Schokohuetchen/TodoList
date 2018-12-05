@@ -11,10 +11,6 @@ import java.lang.Thread.sleep
 
 class AddTodoRobot {
 
-    fun launchTodoListActivity(testRule: ActivityTestRule<TodoListActivity>) {
-        testRule.launchActivity(null)
-    }
-
     fun clickOnFabButton() {
         onView(ViewMatchers.withId(R.id.fab)).perform(ViewActions.click())
     }

@@ -2,31 +2,16 @@ package com.example.rries.sampleapp.test
 
 import android.support.test.rule.ActivityTestRule
 import com.example.rries.sampleapp.ui.TodoListActivity
-import cucumber.api.java.After
-import cucumber.api.java.Before
-import cucumber.api.java.en.And
-import cucumber.api.java.en.Given
-import cucumber.api.java.en.Then
-import cucumber.api.java.en.When
+import com.mauriciotogneri.greencoffee.GreenCoffeeSteps
+import com.mauriciotogneri.greencoffee.annotations.And
+import com.mauriciotogneri.greencoffee.annotations.Given
+import com.mauriciotogneri.greencoffee.annotations.Then
+import com.mauriciotogneri.greencoffee.annotations.When
 import junit.framework.TestCase.assertNotNull
 
-open class AddTodoSteps {
-
-    private val activityTestRule = ActivityTestRule(TodoListActivity::class.java, false, false)
+open class AddTodoSteps(private val activityTestRule: ActivityTestRule<TodoListActivity>): GreenCoffeeSteps() {
 
     private val robot = AddTodoRobot()
-
-    @Before
-    @Throws(Exception::class)
-    fun setUp() {
-        robot.launchTodoListActivity(activityTestRule)
-    }
-
-    @After
-    @Throws(Exception::class)
-    fun tearDown() {
-        activityTestRule.finishActivity()
-    }
 
     @Given("I see the list")
     fun i_see_the_list() {
@@ -43,7 +28,7 @@ open class AddTodoSteps {
         robot.editorOpened()
     }
 
-    @And("I enter {string} in the text field")
+    @And("I enter \\\"([^\\\"]*)\\\" in the text field")
     fun i_enter_testTodo_in_the_text_field(todo: String) {
         robot.enterNewTodo(todo)
     }
@@ -53,7 +38,7 @@ open class AddTodoSteps {
         robot.clickOnSaveButton()
     }
 
-    @Then("I should see the list with the new {string}")
+    @Then("I should see the list with the new \\\"([^\\\"]*)\\\"")
     fun i_should_see_the_list_with_the_new_todo(todo: String) {
         robot.openListWithNewTodo(todo)
     }
