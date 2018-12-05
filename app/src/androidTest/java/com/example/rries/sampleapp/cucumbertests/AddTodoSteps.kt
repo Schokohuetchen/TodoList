@@ -1,4 +1,4 @@
-package com.example.rries.sampleapp.test
+package com.example.rries.sampleapp.cucumbertests
 
 import android.support.test.rule.ActivityTestRule
 import com.example.rries.sampleapp.ui.TodoListActivity
