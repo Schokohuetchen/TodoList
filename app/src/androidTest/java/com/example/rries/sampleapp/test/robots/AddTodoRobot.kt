@@ -1,4 +1,4 @@
-package com.example.rries.sampleapp.cucumbertests
+package com.example.rries.sampleapp.test.robots
 
 import android.support.test.espresso.Espresso.*
 import android.support.test.espresso.action.ViewActions
@@ -10,6 +10,10 @@ import com.example.rries.sampleapp.ui.TodoListActivity
 import java.lang.Thread.sleep
 
 class AddTodoRobot {
+
+    fun launchTodoListActivity(testRule: ActivityTestRule<TodoListActivity>) {
+        testRule.launchActivity(null)
+    }
 
     fun clickOnFabButton() {
         onView(ViewMatchers.withId(R.id.fab)).perform(ViewActions.click())
