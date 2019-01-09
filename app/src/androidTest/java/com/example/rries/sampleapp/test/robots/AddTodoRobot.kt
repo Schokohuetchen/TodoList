@@ -1,13 +1,12 @@
 package com.example.rries.sampleapp.test.robots
 
 import android.support.test.espresso.Espresso.*
-import android.support.test.espresso.action.ViewActions
+import android.support.test.espresso.action.ViewActions.*
 import android.support.test.espresso.assertion.ViewAssertions
-import android.support.test.espresso.matcher.ViewMatchers
+import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import com.example.rries.sampleapp.R
 import com.example.rries.sampleapp.ui.TodoListActivity
-import java.lang.Thread.sleep
 
 class AddTodoRobot {
 
@@ -16,23 +15,23 @@ class AddTodoRobot {
     }
 
     fun clickOnFabButton() {
-        onView(ViewMatchers.withId(R.id.fab)).perform(ViewActions.click())
+        onView(withId(R.id.fab)).perform(click())
     }
 
     fun editorOpened() {
-        onView(ViewMatchers.withId(R.id.editActivity))
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.editActivity))
+            .check(ViewAssertions.matches(isDisplayed()))
     }
 
     fun enterNewTodo(todo: String) {
-        onView(ViewMatchers.withId(R.id.editTodo)).perform(ViewActions.typeText(todo))
+        onView(withId(R.id.editTodo)).perform(typeText(todo))
     }
 
     fun clickOnSaveButton() {
-        onView(ViewMatchers.withId(R.id.saveTodoButton)).perform(ViewActions.click())
+        onView(withId(R.id.saveTodoButton)).perform(click())
     }
 
     fun openListWithNewTodo(todo: String) {
-        onView(ViewMatchers.withId(R.id.textView)).check(ViewAssertions.matches(ViewMatchers.withText(todo)))
+        onView(withId(R.id.textView)).check(ViewAssertions.matches(withText(todo)))
     }
 }

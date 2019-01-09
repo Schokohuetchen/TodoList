@@ -27,7 +27,6 @@ open class AddTodoSteps {
     lateinit var todoRepository: TodoRepository
 
     @Before
-    @Throws(Exception::class)
     fun setup() {
         val context = InstrumentationRegistry.getTargetContext().applicationContext as TodoApplication
         DaggerTestComponent.builder().applicationComponent(context.component).build().inject(this)
@@ -37,7 +36,6 @@ open class AddTodoSteps {
     }
 
     @After
-    @Throws(Exception::class)
     fun destroy() {
         activityTestRule.finishActivity()
         todoRepository.deleteAll()
