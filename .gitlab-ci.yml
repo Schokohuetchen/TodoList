@@ -1,0 +1,19 @@
+image: schokohuetchen/androidfastlanesetup:1.0
+
+stages:
+  - build
+
+variables:
+  LC_ALL: "en_US.UTF-8"
+  LANG: "en_US.UTF-8"
+
+build:
+  stage: build
+  script:
+    - gem update --system
+    - gem install bundler
+    - bundle install
+    - bundle exec fastlane build
+  artifacts:
+    paths:
+      - app/build/outputs/bundle/release
