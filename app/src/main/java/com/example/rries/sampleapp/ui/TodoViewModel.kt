@@ -1,8 +1,8 @@
 package com.example.rries.sampleapp.ui
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.example.rries.sampleapp.TodoApplication
 import com.example.rries.sampleapp.data.Todo
 import com.example.rries.sampleapp.data.TodoRepository

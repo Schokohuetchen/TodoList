@@ -1,12 +1,12 @@
 package com.example.rries.sampleapp.ui
 
 import android.app.Activity
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.Toast
 import com.example.rries.sampleapp.R
 import com.example.rries.sampleapp.data.Todo
@@ -22,7 +22,8 @@ class TodoListActivity : AppCompatActivity(), TodoListAdapter.TodoListAdapterAct
 
         val adapter = TodoListAdapter(this)
         recyclerview.adapter = adapter
-        recyclerview.layoutManager = LinearLayoutManager(this)
+        recyclerview.layoutManager =
+            LinearLayoutManager(this)
 
         todoViewModel = ViewModelProviders.of(this).get(TodoViewModel::class.java)
         todoViewModel.allTodos?.observe(this, Observer { todos ->

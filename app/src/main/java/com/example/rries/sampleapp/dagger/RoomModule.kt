@@ -1,6 +1,6 @@
 package com.example.rries.sampleapp.dagger
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import android.content.Context
 import com.example.rries.sampleapp.data.TodoDao
 import com.example.rries.sampleapp.data.TodoListDatabase

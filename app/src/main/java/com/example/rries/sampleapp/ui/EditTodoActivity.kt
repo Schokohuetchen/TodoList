@@ -3,7 +3,7 @@ package com.example.rries.sampleapp.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.text.TextUtils
 import com.example.rries.sampleapp.R
 import com.example.rries.sampleapp.TodoApplication
